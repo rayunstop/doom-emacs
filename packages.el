@@ -50,3 +50,5 @@
 ;; our package manager can't deal with; see raxod502/straight.el#279)
 ;(package! builtin-package :recipe (:branch "develop"))
 (package! winum)
+(package! protobuf-mode)
+(package! dap-mode)

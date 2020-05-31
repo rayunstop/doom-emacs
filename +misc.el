@@ -41,3 +41,7 @@ current frame."
   (when (and (boundp 'golden-ratio-mode)
              (symbol-value golden-ratio-mode))
     (golden-ratio)))
+
+(defconst my-protobuf-style
+  '((c-basic-offset . 2)
+    (indent-tabs-mode . nil)))

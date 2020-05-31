@@ -20,7 +20,11 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "monospace" :size 14))
+;; (setq doom-font (font-spec :family "monospace" :size 14))
+(setq doom-font (font-spec :family "Source Code Pro" :size 12)
+      doom-unicode-font (font-spec :family "Menlo" :size 12)
+      )
+
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -34,7 +38,6 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
-
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -56,6 +59,28 @@
 ;;       doom-variable-pitch-font (font-spec :family "Menlo") ; inherits `doom-font''s :size
 ;;       doom-unicode-font (font-spec :family "Menlo" :size 12))
 
-(setq doom-font (font-spec :family "Source Code Pro" :size 12)
-      doom-unicode-font (font-spec :family "Menlo" :size 12)
-      )
+;;(setq mac-command-modifier 'meta)
+
+;;(setq doom-leader-key "M-m")
+(setq doom-leader-alt-key "M-m")
+(setq auto-window-vscroll nil)
+(setq doom-modeline-enable-word-count nil)
+(setq lsp-gopls-staticcheck t)
+(setq lsp-eldoc-render-all t)
+(setq lsp-gopls-complete-unimported t)
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 2)
+(setq lsp-ui-doc-enable t
+      lsp-ui-peek-enable t
+      lsp-ui-sideline-enable t
+      lsp-ui-imenu-enable t
+      lsp-ui-flycheck-enable t)
+
+(setq lsp-ui-doc-winum-ignore t
+      lsp-ui-doc--buffer-prefix " *lsp-ui-doc-")
+
+;; dap debugger
+(setq dap-auto-configure-features '(sessions locals controls tooltip))
+
+(add-hook 'protobuf-mode-hook
+          (lambda () (c-add-style "my-style" my-protobuf-style t)))
