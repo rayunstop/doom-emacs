@@ -21,10 +21,21 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 14))
-(setq doom-font (font-spec :family "Source Code Pro" :size 12)
-      doom-unicode-font (font-spec :family "Menlo" :size 12)
-      )
+;; (setq doom-font (font-spec :family "Source Code Pro" :size 12)
+;;       doom-unicode-font (font-spec :family "Menlo" :size 12)
+;;       )
 
+(setq doom-font (font-spec :family "Source Code Pro" :size 12 :weight 'normal :width 'normal)
+      doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 12 :weight 'normal :width 'normal)
+      doom-big-font (font-spec :family "Source Code Pro" :size 20))
+
+;; Set font for chinese characters
+;; Font should be twice the width of asci chars so that org tables align
+;; This will break if run in terminal mode, so use conditional to only run for GUI.
+(if (display-graphic-p)
+    (dolist (charset '(kana han cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font)
+                        charset (font-spec :family "Hiragino Sans GB" :size 18))))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -61,6 +72,8 @@
 
 ;;(setq mac-command-modifier 'meta)
 
+;; dap-mode
+
 ;;(setq doom-leader-key "M-m")
 (setq doom-leader-alt-key "M-m")
 (setq auto-window-vscroll nil)
@@ -78,9 +91,9 @@
 
 (setq lsp-ui-doc-winum-ignore t
       lsp-ui-doc--buffer-prefix " *lsp-ui-doc-")
+(setq org-startup-folded t)
+(setq lsp-ui-mode t)
 
-;; dap debugger
-(setq dap-auto-configure-features '(sessions locals controls tooltip))
 
 (add-hook 'protobuf-mode-hook
           (lambda () (c-add-style "my-style" my-protobuf-style t)))

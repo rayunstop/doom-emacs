@@ -52,3 +52,5 @@
 (package! winum)
 (package! protobuf-mode)
 (package! dap-mode)
+(package! org-superstar :disable t)
+(package! catppuccin-theme)
